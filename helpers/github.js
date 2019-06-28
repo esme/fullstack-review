@@ -19,15 +19,17 @@ let getReposByUsername = (username, cb) => {
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body);
       // console.log('github data',info);
-      let result = {};
+      let result = [];
       for (el of info) {
-        result[el.id] = {
+        result.push({
           id: el.id,
           name: el.name,
+          login: el.owner.login,
+          html_url: el.html_url,
           full_name: el.full_name,
           stargazers_count: el.stargazers_count,
           forks_count: el.forks_count
-        };
+        });
       }
       cb(null, result)
     }

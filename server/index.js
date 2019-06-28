@@ -11,24 +11,51 @@ app.post('/repos', function (req, res) {
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
-  console.log(req.body)
-  git.getReposByUsername(req.body.name, (err, data) => {
-    if (err) {
-      console.log(err)
-      res.status(500).send();
-    } else {
-      console.log(data)
-      // db.save(data);
-      db.save({name: 'william'})
-      res.status(201).send();
-    }
-  })
+  // console.log(req.body)
+  if (req.body.name) {
+    git.getReposByUsername(req.body.name, (err, data) => {
+      if (err) {
+        console.log(err)
+        res.status(500).send();
+      } else {
+        // console.log(data)
+        // db.save(data);
+        data.forEach((el) => db.save(el))
+        res.status(201).send();
+      }
+    })
+  } else {
+    res.status(500).send();
+  }
 });
 
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
-  res.send('hello world!')
+  db.find((err, data) => {
+    if (err) {
+      console.log(err)
+      res.status(500).send()
+    } else {
+      // console.log('finished', data)
+      res.status(200).send(data)
+    }
+  })
+});
+
+app.get('/repos/:id', function (req, res) {
+  // TODO - your code here!
+  // This route should send back the top 25 repos
+  console.log('url', req.url, req.params)
+  db.find((err, data) => {
+    if (err) {
+      console.log(err)
+      res.status(500).send()
+    } else {
+      // console.log('finished', data)
+      res.status(200).send(data)
+    }
+  }, req.params.id)
 });
 
 let port = 1128;
