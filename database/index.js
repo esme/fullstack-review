@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/fetcher');
-
-// export MONGODB_URI=mongodb://heroku_2z5xndz6:heroku_2z5xndz6@ds125126.mlab.com:25126/heroku_2z5xndz6
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/fetcher')
+  .then(() => console.log('Connected to:', process.env.MONGODB_URI))
+  .catch((err) => console.log(err));
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
