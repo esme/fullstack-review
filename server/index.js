@@ -58,7 +58,7 @@ app.get('/repos/:id', function (req, res) {
   }, req.params.id)
 });
 
-let port = 1128;
+let port = process.env.PORT || 1128;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
