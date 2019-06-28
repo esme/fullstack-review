@@ -21,9 +21,9 @@ app.post('/repos', function (req, res) {
         // console.log(data)
         // db.save(data);
 
-        // Promise.all(data.forEach((el) => db.save(el)))
-        //   .then(() => res.status(201).send())
-        //   .catch((err) => console.log(err))
+        Promise.all(data.forEach((el) => db.save(el)))
+          .then(() => res.status(201).send())
+          .catch((err) => console.log(err))
 
         // db.save(data[0])
         res.status(201).send()
