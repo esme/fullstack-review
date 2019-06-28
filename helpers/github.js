@@ -32,6 +32,8 @@ let getReposByUsername = (username, cb) => {
         });
       }
       cb(null, result)
+    } else {
+      cb(error)
     }
   }
 
