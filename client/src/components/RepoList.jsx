@@ -4,9 +4,9 @@ import Repo from './Repo.jsx';
 const RepoList = (props) => (
   <div>
     <h4> Most Popular Repos </h4>
-    There are {props.repos.length} repos from the database.
+    <p>There are {props.repos.length} repos from the database.</p>
     <div>
-      {props.repos.map(el => <Repo repo={el}/>)}
+      {props.repos.map((el, i) => <Repo key={i} repo={el} index={i}/>)}
     </div>
   </div>
 )

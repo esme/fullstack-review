@@ -65,10 +65,11 @@ class App extends React.Component {
   }
 
   render () {
+    let showUserRepos = this.state.userRepos[0] ? <UserRepoList repos={this.state.userRepos}/> : <div></div>
     return (<div>
       <h1>Github Fetcher</h1>
       <Search onSearch={this.search.bind(this)}/>
-      <UserRepoList repos={this.state.userRepos}/>
+      {showUserRepos}
       <RepoList repos={this.state.repos}/>
     </div>)
   }
