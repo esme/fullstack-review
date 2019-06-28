@@ -25,7 +25,7 @@ app.post('/repos', function (req, res) {
         //   .then(() => res.status(201).send())
         //   .catch((err) => console.log(err))
 
-        db.save(data[0])
+        // db.save(data[0])
         res.status(201).send()
       }
     })

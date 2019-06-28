@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/fetcher')
-  .then(() => console.log('Connected to:', process.env.MONGODB_URI))
+const URI = process.env.MONGODB_URI || 'mongodb://localhost/fetcher';
+mongoose.connect(URI)
+  .then(() => console.log('Connected to:', URI))
   .catch((err) => console.log(err));
 
 let repoSchema = mongoose.Schema({
