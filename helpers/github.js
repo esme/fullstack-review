@@ -1,5 +1,5 @@
 const request = require('request');
-const config = require('../config.js');
+const config = require('../config.js') || {TOKEN: process.env.CONFIG_URI};
 
 let getReposByUsername = (username, cb) => {
   // TODO - Use the request module to request repos for a specific
@@ -7,7 +7,6 @@ let getReposByUsername = (username, cb) => {
 
   // The options object has been provided to help you out,
   // but you'll have to fill in the URL
-  if(!config.TOKEN) {config.TOKEN = process.env.CONFIG_URI}
   let options = {
     url: `https://api.github.com/users/${username}/repos`,
     headers: {
