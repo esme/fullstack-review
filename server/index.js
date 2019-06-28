@@ -20,8 +20,9 @@ app.post('/repos', function (req, res) {
       } else {
         // console.log(data)
         // db.save(data);
-        data.forEach((el) => db.save(el))
-        res.status(201).send();
+        Promise.all(data.forEach((el) => db.save(el)))
+          .then(() => res.status(201).send())
+          .catch((err) => console.log(err))
       }
     })
   } else {
