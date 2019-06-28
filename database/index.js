@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/fetcher');
-// Created mongolab-concave-17420 as MONGOLAB_TEAL_URI
 
 // export MONGODB_URI=mongodb://heroku_2z5xndz6:heroku_2z5xndz6@ds125126.mlab.com:25126/heroku_2z5xndz6
 
