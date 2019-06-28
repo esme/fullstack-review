@@ -1,5 +1,5 @@
 const request = require('request');
-const config = require('../config.js') || {TOKEN: process.env.CONFIG_URI};
+const config = {TOKEN: process.env.CONFIG_URI} || require('../config.js');
 
 let getReposByUsername = (username, cb) => {
   // TODO - Use the request module to request repos for a specific
